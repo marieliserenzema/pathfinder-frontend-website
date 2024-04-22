@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Homepage(): React.JSX.Element {
+function HomePage(): React.JSX.Element {
   return (
     <>
       <p>
@@ -12,4 +12,4 @@ function Homepage(): React.JSX.Element {
   );
 }
 
-export default Homepage;
+export default HomePage;

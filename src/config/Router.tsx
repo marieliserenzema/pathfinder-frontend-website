@@ -1,17 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Homepage from '../pages/Homepage.tsx';
-import Loginpage from '../pages/Loginpage.tsx';
+import HomePage from '../pages/HomePage.tsx';
+import LoginPage from '../pages/LoginPage.tsx';
 
 const Router = createBrowserRouter([
   {
     path: '/',
     // eslint-disable-next-line react/react-in-jsx-scope
-    element: <Homepage />,
+    element: <HomePage />,
   },
   {
     path: '/login',
     // eslint-disable-next-line react/react-in-jsx-scope
-    element: <Loginpage />,
+    element: <LoginPage />,
   },
 ]);
 export default Router;
