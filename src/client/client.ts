@@ -12,8 +12,25 @@ const login = async (email: string, password: string) => {
     });
     return response.json();
   } catch (error) {
-    return error;
+    console.error(error);
+    return null;
   }
 };
 
-export default { login };
+const getUsers = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/users', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    });
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export default { login, getUsers };

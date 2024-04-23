@@ -72,10 +72,9 @@ function LoginPage(): React.JSX.Element {
       return;
     }
     // eslint-disable-next-line max-len
-    const data: {access_token?: string, message?: string, statusCode?: number} = await client.login(email, password);
+    const data: {access_token: string} | null = await client.login(email, password);
 
-    if (!data.access_token) {
-      console.error(data?.message);
+    if (!data) {
       return;
     }
     localStorage.setItem('access_token', data.access_token);
