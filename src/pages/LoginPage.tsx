@@ -98,6 +98,7 @@ function LoginPage(): React.JSX.Element {
       </div>
       <div style={styles.input}>
         <input
+          type="password"
           style={styles.input}
           value={password}
           placeholder="Password"
