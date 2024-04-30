@@ -20,6 +20,7 @@ const login = async (email: string, password: string) => {
 const getUsers = async () => {
   try {
     const response = await fetch('http://localhost:3000/users', {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -33,4 +34,37 @@ const getUsers = async () => {
   }
 };
 
-export default { login, getUsers };
+const updateUser = async (userId: string, data: string) => {
+  try {
+    return await fetch(`http://localhost:3000/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+      body: data,
+    });
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const deleteUser = async (id: string) => {
+  try {
+    return await fetch(`http://localhost:3000/users/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export default {
+  login, getUsers, updateUser, deleteUser,
+};
