@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Typography } from '@mui/material';
 import validateCredentials from '../utils/validateCredentials.tsx';
 import client from '../client/client.ts';
 
@@ -58,6 +59,7 @@ function LoginPage(): React.JSX.Element {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
 
   const navigate = useNavigate();
 
@@ -74,7 +76,8 @@ function LoginPage(): React.JSX.Element {
     // eslint-disable-next-line max-len
     const data: {access_token: string} | null = await client.login(email, password);
 
-    if (!data) {
+    if (!data?.access_token) {
+      setLoginError('L\'adresse email ou le mot de passe est incorrect');
       return;
     }
     localStorage.setItem('access_token', data.access_token);
@@ -102,6 +105,9 @@ function LoginPage(): React.JSX.Element {
         />
         <label>{passwordError}</label>
       </div>
+      {loginError && (
+        <Typography style={{ color: 'red' }}>{loginError}</Typography>
+      )}
       <div style={styles.button}>
         <input type="button" onClick={onButtonClick} value="Log in" />
       </div>

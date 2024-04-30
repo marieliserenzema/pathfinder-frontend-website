@@ -2,8 +2,17 @@ import React from 'react';
 import {
   AppBar, Avatar, Box, Button, Container, IconButton, Toolbar, Tooltip, Typography,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { usePaginatedUserListContext } from '../context/PaginatedUserListContext.tsx';
 
 function Navbar(): React.JSX.Element {
+  const { logout } = usePaginatedUserListContext();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate('/login');
+  }
   return (
     <Box sx={{
       position: 'fixed', width: '100%', zIndex: 1000, top: 0, left: 0,
@@ -26,7 +35,7 @@ function Navbar(): React.JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              PATHFINDER
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -65,9 +74,9 @@ function Navbar(): React.JSX.Element {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Tooltip title="Déconnexion">
+                <IconButton onClick={handleLogout} sx={{ p: 0 }}>
+                  <Avatar alt="Admin" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
             </Box>
