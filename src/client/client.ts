@@ -65,6 +65,38 @@ const deleteUser = async (id: string) => {
   }
 };
 
+const getHikes = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/hikes', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    });
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const deleteHike = async (id: string) => {
+  try {
+    return await fetch(`http://localhost:3000/hikes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
 export default {
-  login, getUsers, updateUser, deleteUser,
+  login, getUsers, updateUser, deleteUser, getHikes, deleteHike,
 };

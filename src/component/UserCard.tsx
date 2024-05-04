@@ -37,7 +37,7 @@ function UserCard({ currentUser }: UserCardProps): React.JSX.Element {
 
   const handleDeleteUserClick = () => {
     client.deleteUser(currentUser._id).then((response) => {
-      if (response?.ok) {
+      if (response?.ok && paginatedUserList) {
         paginatedUserList.items = paginatedUserList.items.filter(
           (user: User) => currentUser._id !== user._id,
         );

@@ -5,11 +5,14 @@ import router from './config/Router.tsx';
 import {
   PaginatedUserListProvider,
 } from './context/PaginatedUserListContext.tsx';
+import { PaginatedHikeListProvider } from './context/PaginatedHikeListContext.tsx';
 
 function App(): React.JSX.Element {
   return (
     <PaginatedUserListProvider>
-      <RouterProvider router={router} />
+      <PaginatedHikeListProvider>
+        <RouterProvider router={router} />
+      </PaginatedHikeListProvider>
     </PaginatedUserListProvider>
   );
 }
