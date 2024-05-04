@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../component/Navbar.tsx';
 import UserList from '../component/UserList.tsx';
 
-function HomePage(): React.JSX.Element {
+function AlertsPage(): React.JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,4 +20,4 @@ function HomePage(): React.JSX.Element {
   );
 }
 
-export default HomePage;
+export default AlertsPage;

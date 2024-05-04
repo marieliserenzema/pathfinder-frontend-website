@@ -81,7 +81,7 @@ function LoginPage(): React.JSX.Element {
       return;
     }
     localStorage.setItem('access_token', data.access_token);
-    navigate('/');
+    navigate('/users');
   };
 
   return (

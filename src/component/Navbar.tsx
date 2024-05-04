@@ -13,6 +13,19 @@ function Navbar(): React.JSX.Element {
     logout();
     navigate('/login');
   }
+
+  function handleUsers() {
+    navigate('/users');
+  }
+
+  function handleHikes() {
+    navigate('/hikes');
+  }
+
+  function handleAlerts() {
+    navigate('/alerts');
+  }
+
   return (
     <Box sx={{
       position: 'fixed', width: '100%', zIndex: 1000, top: 0, left: 0,
@@ -37,39 +50,24 @@ function Navbar(): React.JSX.Element {
             >
               PATHFINDER
             </Typography>
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              />
-            </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              LOGO
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={handleUsers}
               >
-                pouet
+                Utilisateurs
+              </Button>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={handleHikes}
+              >
+                Randonnées
+              </Button>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={handleAlerts}
+              >
+                Alertes
               </Button>
             </Box>
 
