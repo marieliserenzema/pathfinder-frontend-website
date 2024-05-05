@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../component/Navbar.tsx';
 import UserList from '../component/UserList.tsx';
+import AlertList from '../component/AlertList.tsx';
+import { AlertListProvider } from '../context/PaginatedAlertListContext.tsx';
 
 function AlertsPage(): React.JSX.Element {
   const navigate = useNavigate();
@@ -13,10 +15,10 @@ function AlertsPage(): React.JSX.Element {
   }, [navigate]);
 
   return (
-    <>
+    <AlertListProvider>
       <Navbar />
-      <UserList />
-    </>
+      <AlertList />
+    </AlertListProvider>
   );
 }
 

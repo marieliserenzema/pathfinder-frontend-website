@@ -13,7 +13,7 @@ interface HikeCardProps {
 const style = {
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center', // Centrer verticalement
+  justifyContent: 'center',
   overflowY: 'auto',
   width: 600,
   marginBottom: 1,
@@ -24,24 +24,26 @@ function HikeCard({ currentHike }: HikeCardProps): React.JSX.Element {
   const { paginatedHikeList, setPaginatedHikeList } = usePaginatedHikeListContext();
   const [hikeExpanded, setHikeExpanded] = React.useState(false);
 
-  const handleExpandUserClick = () => {
+  const handleExpandHikeClick = () => {
     setHikeExpanded(!hikeExpanded);
   };
 
-  const handleDeleteUserClick = () => {
+  const handleDeleteHikeClick = () => {
     client.deleteHike(currentHike._id).then((response) => {
-      if (response?.ok && paginatedHikeList) {
-        paginatedHikeList.items = paginatedHikeList.items.filter(
-          (hike: Hike) => currentHike._id !== hike._id,
-        );
-        setPaginatedHikeList(paginatedHikeList);
+      if (response?.ok && paginatedHikeList?.items) {
+        setPaginatedHikeList((prevState) => ({
+          ...prevState,
+          items: paginatedHikeList.items.filter(
+            (hike: Hike) => currentHike._id !== hike._id,
+          ),
+        }));
       }
     });
   };
 
   return (
     <Box sx={style}>
-      <Card onClick={handleExpandUserClick}>
+      <Card onClick={handleExpandHikeClick}>
         <div style={{
           display: 'flex', justifyContent: 'space-between', flex: 1, margin: '1rem',
         }}
@@ -76,7 +78,7 @@ function HikeCard({ currentHike }: HikeCardProps): React.JSX.Element {
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button color="warning" onClick={handleDeleteUserClick}>Supprimer</Button>
+            <Button color="warning" onClick={handleDeleteHikeClick}>Supprimer</Button>
           </div>
         </Collapse>
       </Card>

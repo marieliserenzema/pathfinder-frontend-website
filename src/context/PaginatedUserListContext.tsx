@@ -20,7 +20,7 @@ function PaginatedUserListProvider({ children }: { children: React.ReactNode }) 
   const [paginatedUserList, setPaginatedUserList] = useState<PaginatedList<User>| undefined>(undefined);
 
   const logout = () => {
-    setPaginatedUserList([]);
+    setPaginatedUserList(undefined);
     localStorage.removeItem('access_token');
   };
 

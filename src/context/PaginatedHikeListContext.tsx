@@ -8,13 +8,13 @@ import React, {
 import { PaginatedList } from '../type/paginatedList.ts';
 import { Hike } from '../type/hike.ts';
 
-interface UserContextProps {
+interface HikeContextProps {
   paginatedHikeList: PaginatedList<Hike> | undefined;
   setPaginatedHikeList: Dispatch<SetStateAction<PaginatedList<Hike> | undefined>>;
   logout: () => void;
 }
 
-const PaginatedHikeListContext = createContext<UserContextProps | undefined>(undefined);
+const PaginatedHikeListContext = createContext<HikeContextProps | undefined>(undefined);
 
 function PaginatedHikeListProvider({ children }: { children: React.ReactNode }) {
   const [paginatedHikeList, setPaginatedHikeList] = useState<PaginatedList<Hike>| undefined>(undefined);
