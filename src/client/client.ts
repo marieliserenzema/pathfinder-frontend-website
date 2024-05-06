@@ -129,6 +129,38 @@ const deleteAlert = async (id: string) => {
   }
 };
 
+const getComments = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/comments', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    });
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const deleteComment = async (id: string) => {
+  try {
+    return await fetch(`http://localhost:3000/comments/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
 export default {
-  login, getUsers, updateUser, deleteUser, getHikes, deleteHike, getAlerts, deleteAlert,
+  login, getUsers, updateUser, deleteUser, getHikes, deleteHike, getAlerts, deleteAlert, getComments, deleteComment,
 };

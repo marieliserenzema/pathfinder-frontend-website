@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import client from '../client/client.ts';
 import Navbar from './Navbar.tsx';
-import { useAlertListContext } from '../context/PaginatedAlertListContext.tsx';
+import { useAlertListContext } from '../context/AlertListContext.tsx';
 import { Alert } from '../type/alert.ts';
 import AlertCard from './AlertCard.tsx';
 
@@ -34,7 +34,7 @@ function AlertList(): React.JSX.Element {
   return (
     <>
       <Navbar />
-      {alertList.length && (
+      {alertList.length ? (
         <div
           style={{
             overflowX: 'auto',
@@ -46,6 +46,10 @@ function AlertList(): React.JSX.Element {
           {alertList.map((alert) => (
             <AlertCard key={alert._id} currentAlert={alert} />
           ))}
+        </div>
+      ) : (
+        <div>
+          <p>Aucune données trouvés</p>
         </div>
       )}
     </>

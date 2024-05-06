@@ -15,11 +15,15 @@ function Navbar(): React.JSX.Element {
   }
 
   function handleUsers() {
-    navigate('/users');
+    navigate('/');
   }
 
   function handleHikes() {
     navigate('/hikes');
+  }
+
+  function handleComments() {
+    navigate('/comments');
   }
 
   function handleAlerts() {
@@ -62,6 +66,12 @@ function Navbar(): React.JSX.Element {
                 onClick={handleHikes}
               >
                 Randonnées
+              </Button>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={handleComments}
+              >
+                Commentaires
               </Button>
               <Button
                 sx={{ my: 2, color: 'white', display: 'block' }}

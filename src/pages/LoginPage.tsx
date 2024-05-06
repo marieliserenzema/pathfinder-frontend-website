@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Typography } from '@mui/material';
 import validateCredentials from '../utils/validateCredentials.tsx';
@@ -63,6 +63,12 @@ function LoginPage(): React.JSX.Element {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem('access_token')) {
+      navigate('/');
+    }
+  }, []);
+
   const onButtonClick = async () => {
     // You'll update this function later...
     if (!validateCredentials.validateEmail(email)) {
@@ -81,7 +87,7 @@ function LoginPage(): React.JSX.Element {
       return;
     }
     localStorage.setItem('access_token', data.access_token);
-    navigate('/users');
+    navigate('/');
   };
 
   return (

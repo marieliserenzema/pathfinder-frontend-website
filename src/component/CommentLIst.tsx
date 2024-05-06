@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import client from '../client/client.ts';
 import Navbar from './Navbar.tsx';
-import { PaginatedList } from '../type/paginatedList.ts';
-import { usePaginatedHikeListContext } from '../context/PaginatedHikeListContext.tsx';
-import { Hike } from '../type/hike.ts';
-import HikeCard from './HikeCard.tsx';
+import { useCommentListContext } from '../context/CommentListContext.tsx';
+import { Comment } from '../type/comment.ts';
+import CommentCard from './CommentCard.tsx';
 
-function HikeList(): React.JSX.Element {
-  const { paginatedHikeList, setPaginatedHikeList } = usePaginatedHikeListContext();
+function CommentList(): React.JSX.Element {
+  const { commentList, setCommentList } = useCommentListContext();
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -18,11 +17,12 @@ function HikeList(): React.JSX.Element {
       navigate('/login');
     }
     setIsLoading(true);
-    client.getHikes().then((data: PaginatedList<Hike>) => {
-      setPaginatedHikeList(data);
+    client.getComments().then((data: Comment[]) => {
+      console.log(data);
+      setCommentList(data);
       setIsLoading(false);
     });
-  }, [navigate]);
+  }, []);
 
   if (isLoading) {
     return (
@@ -35,7 +35,7 @@ function HikeList(): React.JSX.Element {
   return (
     <>
       <Navbar />
-      {paginatedHikeList ? (
+      {commentList.length ? (
         <div
           style={{
             overflowX: 'auto',
@@ -44,8 +44,8 @@ function HikeList(): React.JSX.Element {
             margin: '0.5rem',
           }}
         >
-          {paginatedHikeList.items.map((hike) => (
-            <HikeCard key={hike._id} currentHike={hike} />
+          {commentList.map((comment) => (
+            <CommentCard key={comment._id} currentComment={comment} />
           ))}
         </div>
       ) : (
@@ -57,4 +57,4 @@ function HikeList(): React.JSX.Element {
   );
 }
 
-export default HikeList;
+export default CommentList;

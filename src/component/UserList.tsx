@@ -35,21 +35,24 @@ function UserList(): React.JSX.Element {
   return (
     <>
       <Navbar />
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center', // Centrer verticalement
-        alignItems: 'center', // Centrer horizontalement
-        height: '100vh', // Hauteur de la vue
-        overflowY: 'auto', // Activer le défilement vertical si nécessaire
-        width: 600,
-      }}
-      >
-        {paginatedUserList
-            && paginatedUserList.items.map((user) => (
-              <UserCard key={user._id} currentUser={user} />
-            ))}
-      </div>
+      {paginatedUserList ? (
+        <div
+          style={{
+            overflowX: 'auto',
+            width: '100%',
+            height: '70vh',
+            margin: '0.5rem',
+          }}
+        >
+          {paginatedUserList.items.map((user) => (
+            <UserCard key={user._id} currentUser={user} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          <p>Aucune données trouvés</p>
+        </div>
+      )}
     </>
   );
 }

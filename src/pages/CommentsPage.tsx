@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../component/Navbar.tsx';
-import AlertList from '../component/AlertList.tsx';
-import { AlertListProvider } from '../context/AlertListContext.tsx';
+import { CommentListProvider } from '../context/CommentListContext.tsx';
+import CommentList from '../component/CommentLIst.tsx';
 
-function AlertsPage(): React.JSX.Element {
+function CommentsPage(): React.JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,11 +14,11 @@ function AlertsPage(): React.JSX.Element {
   }, [navigate]);
 
   return (
-    <AlertListProvider>
+    <CommentListProvider>
       <Navbar />
-      <AlertList />
-    </AlertListProvider>
+      <CommentList />
+    </CommentListProvider>
   );
 }
 
-export default AlertsPage;
+export default CommentsPage;

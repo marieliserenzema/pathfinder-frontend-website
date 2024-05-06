@@ -3,7 +3,7 @@ import {
   Box, Button, Card, Collapse, Typography,
 } from '@mui/material';
 import client from '../client/client.ts';
-import { useAlertListContext } from '../context/PaginatedAlertListContext.tsx';
+import { useAlertListContext } from '../context/AlertListContext.tsx';
 import { Alert } from '../type/alert.ts';
 
 interface AlertCardProps {
