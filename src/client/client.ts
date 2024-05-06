@@ -1,6 +1,8 @@
+const url = import.meta.env.VITE_API_URL;
+
 const login = async (email: string, password: string) => {
   try {
-    const response = await fetch('http://localhost:3000/auth/admin', {
+    const response = await fetch(`${url}/auth/admin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +21,7 @@ const login = async (email: string, password: string) => {
 
 const getUsers = async () => {
   try {
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch(`${url}/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +38,7 @@ const getUsers = async () => {
 
 const updateUser = async (userId: string, data: string) => {
   try {
-    return await fetch(`http://localhost:3000/users/${userId}`, {
+    return await fetch(`${url}/users/${userId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +54,7 @@ const updateUser = async (userId: string, data: string) => {
 
 const deleteUser = async (id: string) => {
   try {
-    return await fetch(`http://localhost:3000/users/${id}`, {
+    return await fetch(`${url}/users/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +69,7 @@ const deleteUser = async (id: string) => {
 
 const getHikes = async () => {
   try {
-    const response = await fetch('http://localhost:3000/hikes', {
+    const response = await fetch(`${url}/hikes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -84,7 +86,7 @@ const getHikes = async () => {
 
 const deleteHike = async (id: string) => {
   try {
-    return await fetch(`http://localhost:3000/hikes/${id}`, {
+    return await fetch(`${url}/hikes/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -99,7 +101,7 @@ const deleteHike = async (id: string) => {
 
 const getAlerts = async () => {
   try {
-    const response = await fetch('http://localhost:3000/alerts', {
+    const response = await fetch(`${url}/alerts`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +118,7 @@ const getAlerts = async () => {
 
 const deleteAlert = async (id: string) => {
   try {
-    return await fetch(`http://localhost:3000/alerts/${id}`, {
+    return await fetch(`${url}/alerts/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -131,7 +133,7 @@ const deleteAlert = async (id: string) => {
 
 const getComments = async () => {
   try {
-    const response = await fetch('http://localhost:3000/comments', {
+    const response = await fetch(`${url}/comments`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -148,7 +150,7 @@ const getComments = async () => {
 
 const deleteComment = async (id: string) => {
   try {
-    return await fetch(`http://localhost:3000/comments/${id}`, {
+    return await fetch(`${url}/comments/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box, Button, Card, Collapse, Typography,
 } from '@mui/material';
+
 import client from '../client/client.ts';
 import { useAlertListContext } from '../context/AlertListContext.tsx';
 import { Alert } from '../type/alert.ts';
